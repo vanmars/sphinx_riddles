@@ -27,5 +27,6 @@ namespace Sphinx.Models
     Riddle7 =  new Dictionary<string, string> { {"id", "7"}, {"riddle", "Alive without breath, as cold as death. Never thirsty, ever drinking. All in mail never clinking."}, {"riddleAnswer", "fish"} };
     Riddle8 =  new Dictionary<string, string> { {"id", "8"}, {"riddle", "This thing all things devours: Birds, beasts, trees, flowers; Gnaws iron, bites steel; Grinds hard stones to meal; Slays king, ruins town, and beats high mountain down."}, {"riddleAnswer", "time"} };
   }
+
 }
 }

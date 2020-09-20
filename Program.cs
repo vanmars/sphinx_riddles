@@ -8,10 +8,12 @@ namespace Spinx
   {
     public static void Main()
     {
-      // Create Instance of New Game
+      // Create Instance of New Game and New Game List
       RiddleGame Game = new RiddleGame();
 
-      // Begin Game
+      List<Dictionary<string, string>> gameList = new List<Dictionary<string, string>> {Game.Riddle1, Game.Riddle2, Game.Riddle3, Game.Riddle4, Game.Riddle5, Game.Riddle6, Game.Riddle7, Game.Riddle8};
+
+      // Begin Game 
       Console.WriteLine("*************************************************");
       Console.WriteLine("YOU HAVE ENTERED THE LAIR OF THE SPHINX!");
       Console.WriteLine("*************************************************");
@@ -20,36 +22,37 @@ namespace Spinx
       Console.WriteLine("Answer incorrectly, . . . and you'll be devoured!");
       Console.WriteLine("*************************************************");
       
-      
-      // Provide First Riddle and Capture Response
-      Console.WriteLine("Riddle: " + Game.Riddle1["riddle"]);
-      string answer = Console.ReadLine();
-      string answerToLower = answer.ToLower();
-      // Conditionals for Responding to Second Question
-      if (answerToLower.Contains(Game.Riddle1["riddleAnswer"]))
+      // Game Play Loop
+      foreach (Dictionary<string, string> riddle in gameList)
       {
-        Console.WriteLine("*** Well done, you are correct. You will continue to the next round with the Spinx. ***");
-        // Provide Second Riddle and Capture Response
-        Console.WriteLine("Riddle: " + Game.Riddle2["riddle"]);
-        string answer2 = Console.ReadLine();
-        string answerToLower2 = answer2.ToLower();
-        // Conditionals for Responding to Second Question
-        if (answerToLower2.Contains(Game.Riddle2["riddleAnswer"]))
+        Console.WriteLine("Riddle: " + riddle["riddle"]);
+        string answer = Console.ReadLine();
+        string answerToLower = answer.ToLower();
+        if (riddle["id"] == "8")
         {
-          Console.WriteLine("Congratulations, wise one! You have defeated the Spinx.");
+          if (answerToLower.Contains(riddle["riddleAnswer"]))
+          {
+            Console.WriteLine("*** Congratulations, wise one! You have defeated the mighty Sphinx. ***");
+          }
+          else
+          {
+            Console.WriteLine("Uh oh . . . you have answered incorrectly. You have been devoured by the Sphinx.");     
+         }
         }
         else
         {
-          Console.WriteLine("Uh oh . . . you have answered incorrectly. You have been devoured by the Sphinx.");
-        }      
+          if (answerToLower.Contains(riddle["riddleAnswer"]))
+          {
+            Console.WriteLine("*** Well done, you are correct. You will continue to the next round with the Spinx. ***");
+          }
+          else
+          {
+            Console.WriteLine("Uh oh . . . you have answered incorrectly. You have been devoured by the Sphinx.");     
+            break; 
+         }
+        }
       }
-      else
-      {
-        Console.WriteLine("Uh oh . . . you have answered incorrectly. You have been devoured by the Sphinx.");
-      }
-
-     
-
+      
     }
   }
 }
